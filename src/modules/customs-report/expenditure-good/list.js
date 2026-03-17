@@ -73,7 +73,7 @@ export class List {
 
                     i.price = i.price.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                     i.qty = i.qty.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-
+                    i.pebDate= i.pebDate ?  moment(i.pebDate).format("DD MMM YYYY") : "-";
                     this.data.push(i);
 
                     //Span
@@ -90,6 +90,7 @@ export class List {
                     if (pebspan) {
                         pebspan.rowspan = this.rowCount[b.pebNo]
                     }
+                   
                 }
             });
 
