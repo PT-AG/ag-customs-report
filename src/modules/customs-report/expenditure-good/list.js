@@ -46,7 +46,8 @@ export class List {
             page: this.info.page,
             size: this.info.size,
             dateFrom: this.dateFrom ? moment(this.dateFrom).format("YYYY-MM-DD") : "",
-            dateTo: this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : ""
+            dateTo: this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : "",
+            isCustoms:true
         }
         this.service.search(args)
 
@@ -122,7 +123,8 @@ export class List {
         if (Object.getOwnPropertyNames(this.error).length === 0) {
             var info = {
                 dateFrom: this.dateFrom ? moment(this.dateFrom).format("YYYY-MM-DD") : "",
-                dateTo: this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : ""
+                dateTo: this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : "",
+                isCustoms:true
             }
             this.service.generateExcel(info);
         }
