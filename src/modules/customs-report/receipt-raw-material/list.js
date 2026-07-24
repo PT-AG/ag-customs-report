@@ -166,12 +166,16 @@ export class List {
             return '-';
         }
 
-        const date = new Date(recordDate);
+        const parts = recordDate.split('-');
 
-        // Pastikan valid date
+        if (parts.length !== 3) return '-';
+
+        const [day, month, year] = parts;
+
+        const date = new Date(year, month - 1, day);
+
         if (isNaN(date.getTime())) return '-';
 
-        // Format: "29 Okt 2025"
         return date.toLocaleDateString('id-ID', {
             day: '2-digit',
             month: 'short',
