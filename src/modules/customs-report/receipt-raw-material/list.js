@@ -54,6 +54,7 @@ export class List {
                 this.totalqty = 0;
                 this.totalprice =0;
                 this.rowCount = [];
+                this.rowCountDoc = [];
                 var rowDoc = [];
                 this.info.total = result.info.total;
                 var index = 0;
@@ -71,12 +72,24 @@ export class List {
                     i.Amount = i.Amount.toLocaleString('en-EN', { minimumFractionDigits: 4, maximumFractionDigits: 4 })
 
                     this.data.push(i);
+
+                    var doc = i.ProductCode + i.ProductName + i.SmallUomUnit + i.SmallQuantity + i.Amount + i.StorageName + i.SupplierName;
+                    if(!this.rowCountDoc[doc]){
+                        this.rowCountDoc[doc] = 1;
+                    } else{
+                        this.rowCountDoc[doc]++;
+                    }
                 }
 
                 for (var b of result.data) {
                     let clastype = result.data.find(o => o.BeacukaiNo == b.BeacukaiNo);
                     if (clastype) {
                         clastype.rowspan = this.rowCount[b.BeacukaiNo]
+                    }
+                    var docs = b.ProductCode + b.ProductName + b.SmallUomUnit + b.SmallQuantity + b.Amount + b.StorageName + b.SupplierName;
+                    let clasdoc = result.data.find(i => i.ProductCode + i.ProductName + i.SmallUomUnit + i.SmallQuantity + i.Amount + i.StorageName + i.SupplierName == docs);
+                    if (clasdoc) {
+                        clasdoc.docspan = this.rowCountDoc[docs]
                     }
                 }
 
