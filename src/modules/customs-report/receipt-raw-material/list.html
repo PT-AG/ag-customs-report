@@ -65,15 +65,15 @@
                     <td class="text-center">${item.SerialNo}</td>
                     <td class="text-center">${item.URNNo}</td>
                     <td class="text-center">${formatRecordDate(item.URNDate)}</td>
-                    <td class="text-center">${item.ProductCode}</td>
-                    <td class="text-center">${item.ProductName}</td>
-                    <td class="text-center">${item.SmallUomUnit}</td>
-                    <td class="text-center">${item.SmallQuantity}</td>
-                    <td class="text-center">${item.DOCurrencyCode}</td>
-                    <td class="text-center">${item.Amount}</td>
-                    <td class="text-center">${item.StorageName}</td>
-                    <td class="text-center">${item.SupplierName}</td>
-                    <td class="text-center">${item.Country}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.ProductCode}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.ProductName}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.SmallUomUnit}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.SmallQuantity}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.DOCurrencyCode}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.Amount}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.StorageName}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.SupplierName}</td>
+                    <td class="text-center" if.bind="item.docspan" rowspan="${item.docspan}">${item.Country}</td>
                 </tr>
                 <tr class="active">
                     <td class="text-center" colspan="12"><strong>T O T A L . . . . . . . . . . . . . . .</strong></td>
