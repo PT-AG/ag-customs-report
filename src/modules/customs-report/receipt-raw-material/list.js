@@ -175,25 +175,43 @@ export class List {
     }
 
     formatRecordDate(recordDate) {
-        if (!recordDate || recordDate === '-' || recordDate === '0001-01-01' || recordDate.includes('0001')) {
+        if (
+            !recordDate ||
+            recordDate === '-' ||
+            recordDate.includes('0001')
+        ) {
             return '-';
         }
 
-        const parts = recordDate.split('-');
+        const value = String(recordDate).trim();
+        const datePart = value.substring(0, 10);
+        const parts = datePart.split('-');
 
-        if (parts.length !== 3) return '-';
+        if (parts.length !== 3) {
+            return '-';
+        }
 
-        const [day, month, year] = parts;
+        const year = Number(parts[0]);
+        const month = Number(parts[1]);
+        const day = Number(parts[2]);
 
-        const date = new Date(year, month - 1, day);
+        if (
+            !year ||
+            month < 1 ||
+            month > 12 ||
+            day < 1 ||
+            day > 31
+        ) {
+            return '-';
+        }
 
-        if (isNaN(date.getTime())) return '-';
+        const monthNames = [
+            'Jan', 'Feb', 'Mar', 'Apr',
+            'Mei', 'Jun', 'Jul', 'Agu',
+            'Sep', 'Okt', 'Nov', 'Des'
+        ];
 
-        return date.toLocaleDateString('id-ID', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric'
-        });
+        return `${String(day).padStart(2, '0')} ${monthNames[month - 1]} ${year}`;
     }
 
 }
